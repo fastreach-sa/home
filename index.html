@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فاست ريتش - خدمة التوصيل السريع</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #FF6B00;  /* Orange */
+            --secondary: #003E6E; /* Dark blue */
+            --accent: #0077B6;    /* Medium blue */
+            --light: #F8F9FA;
+            --dark: #212529;
+            --text: #333333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            line-height: 1.6;
+            text-align: right;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            color: var(--secondary);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            order: -1;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li {
+            margin-left: 0;
+            margin-right: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+            padding: 10px 0;
+            display: block;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            right: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.05);
+            border-radius: 20px;
+            padding: 2px;
+        }
+        
+        .language-toggle span {
+            cursor: pointer;
+            padding: 5px 15px;
+            border-radius: 18px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .language-toggle span.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: background-image 0.5s ease-in-out;
+        }
+        
+        .welcome-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        /* Improved Slider Styles */
+        .slider-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto;
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.3s ease;
+            height: 100%;
+            width: 100%;
+        }
+        
+        [lang="ar"] .slider {
+            flex-direction: row;
+        }
+        
+        [lang="en"] .slider {
+            flex-direction: row;
+        }
+        
+        .slide {
+            flex: 0 0 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .slide-content {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .slide h1 {
+            font-size: 42px;
+            margin: 0;
+            line-height: 1.3;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .slider-dot.active {
+            background: white;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 15px 32px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(255,107,0,0.3);
+        }
+        
+        .btn:hover {
+            background-color: #e05d00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,0,0.4);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            aspect-ratio: 1/1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #F8FAFC;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0,62,110,0.1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(0,62,110,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 32px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-box {
+            background-color: #F8FAFC;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-box h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .feature-box p {
+            color: var(--text);
+            margin: 0;
+        }
+        
+        /* Clients Section */
+        .clients {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .client-logo {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+        
+        .client-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            width: auto;
+            height: auto;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .footer-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-info-item i {
+            font-size: 20px;
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .slide h1 {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                left: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 99;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .language-toggle {
+                margin-right: 0;
+                margin-left: auto;
+            }
+            
+            [lang="en"] .language-toggle {
+                margin-left: 0;
+                margin-right: auto;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .welcome-message {
+                font-size: 20px;
+            }
+            
+            .slide h1 {
+                font-size: 28px;
+            }
+            
+            .slide-content {
+                width: 90%;
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .slide h1 {
+                font-size: 24px;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        /* Language Specific Styles */
+        [lang="en"] {
+            text-align: left;
+            direction: ltr;
+        }
+        
+        [lang="en"] .hero,
+        [lang="en"] .slide-content,
+        [lang="en"] .section-title h2:after {
+            text-align: left;
+        }
+        
+        [lang="en"] nav ul li {
+            margin-right: 0;
+            margin-left: 25px;
+        }
+        
+        [lang="en"] nav ul li a:after {
+            right: auto;
+            left: 0;
+        }
+        
+        [lang="en"] nav ul li a:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            <a href="#" class="logo lang-ar">فاست <span>ريتش</span></a>
+            <a href="#" class="logo lang-en">Fast <span>Reach</span></a>
+            <nav>
+                <ul id="main-nav">
+                    <li><a href="#home" class="lang-ar">الرئيسية</a><a href="#home" class="lang-en">Home</a></li>
+                    <li><a href="#about" class="lang-ar">من نحن</a><a href="#about" class="lang-en">About</a></li>
+                    <li><a href="#services" class="lang-ar">خدماتنا</a><a href="#services" class="lang-en">Services</a></li>
+                    <li><a href="#features" class="lang-ar">مميزاتنا</a><a href="#features" class="lang-en">Features</a></li>
+                    <li><a href="#clients" class="lang-ar">عملاؤنا</a><a href="#clients" class="lang-en">Clients</a></li>
+                    <li><a href="#contact" class="lang-ar">اتصل بنا</a><a href="#contact" class="lang-en">Contact</a></li>
+                    <li class="language-toggle">
+                        <span class="active" data-lang="ar">العربية</span>
+                        <span data-lang="en">English</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="welcome-message lang-ar">مرحباً بكم في Fast Reach حيث تلتقي الجودة مع الاحترافية</div>
+            <div class="welcome-message lang-en">Welcome to Fast Reach where quality meets professionalism</div>
+            
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h1 class="lang-ar">خل التوصيل علينا وركز بشغلك</h1>
+                            <h1 class="lang-en">Leave delivery to us and focus on your work</h1>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h1 class="lang-ar">شحن سريع وآمن</h1>
+                            <h1 class="lang-en">Fast and secure shipping</h1>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h1 class="lang-ar">بضغطة زر نوصل لك وين ما كنت</h1>
+                            <h1 class="lang-en">With one click we deliver wherever you are</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-controls">
+                <div class="slider-dot active" data-index="0"></div>
+                <div class="slider-dot" data-index="1"></div>
+                <div class="slider-dot" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="lang-ar">عن فاست ريتش</h2>
+                <h2 class="lang-en">About Fast Reach</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="lang-ar">هدفنا</h3>
+                    <h3 class="lang-en">Our Goal</h3>
+                    <p class="lang-ar">ان نكون الخيار الاول للعملاء في مجال الخدمات اللوجستية على مستوى المملكة؛ عن طريق تحسين جودة العمل بشكل دوري ومستمر لارضاء عملائنا، يقينًا منا بالقدرة على الانفراد بما نطمح والتفاني بما نقدم.</p>
+                    <p class="lang-en">To be the first choice for customers in logistics services across the Kingdom by continuously improving work quality to satisfy our customers, confident in our ability to excel in our aspirations and dedication to what we offer.</p>
+                    
+                    <h3 class="lang-ar">على ماذا نعمل؟</h3>
+                    <h3 class="lang-en">What do we do?</h3>
+                    <p class="lang-ar">نحن نعمل على استثمار وقت عملائنا بتقديم خدمات مميزة وحلول فورية وسريعة. نسعى دوماً للتجدد والابتكار لنمنحك تجربة لوجستية استثنائية.</p>
+                    <p class="lang-en">We work to invest our customers' time by providing exceptional services and immediate, fast solutions. We constantly seek renewal and innovation to give you an exceptional logistics experience.</p>
+                    
+                    <h3 class="lang-ar">فريقنا</h3>
+                    <h3 class="lang-en">Our Team</h3>
+                    <p class="lang-ar">فريقنا هو سر سرعتنا ونجاحنا. بخبرته والتزامه، نضمن لكم خدمات لوجستية احترافية تتجاوز التوقعات.</p>
+                    <p class="lang-en">Our team is the secret to our speed and success. With their expertise and commitment, we guarantee professional logistics services that exceed expectations.</p>
+                    
+                    <a href="#contact" class="btn lang-ar">تواصل معنا</a>
+                    <a href="#contact" class="btn lang-en">Contact Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="x.jpeg" alt="فريق التوصيل">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="lang-ar">خدماتنا</h2>
+                <h2 class="lang-en">Our Services</h2>
+                <p class="lang-ar">نقدم مجموعة متكاملة من خدمات التوصيل</p>
+                <p class="lang-en">We provide a complete range of delivery services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3 class="lang-ar">التوصيل السريع</h3>
+                    <h3 class="lang-en">Fast Delivery</h3>
+                    <p class="lang-ar">خدمة توصيل سريعة داخل المدينة خلال ساعتين فقط</p>
+                    <p class="lang-en">Fast delivery service within the city in just 2 hours</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3 class="lang-ar">التوصيل الآمن</h3>
+                    <h3 class="lang-en">Secure Delivery</h3>
+                    <p class="lang-ar">توصيل آمن للمستندات والبضائع القيمة مع تأمين كامل</p>
+                    <p class="lang-en">Secure delivery for documents and valuable goods with full insurance</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⏱️</div>
+                    <h3 class="lang-ar">توصيل على مدار الساعة</h3>
+                    <h3 class="lang-en">24/7 Delivery</h3>
+                    <p class="lang-ar">خدمة توصيل متاحة 24/7 لتلبية احتياجاتكم في أي وقت</p>
+                    <p class="lang-en">24/7 delivery service to meet your needs anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="lang-ar">لماذا تختارنا؟</h2>
+                <h2 class="lang-en">Why Choose Us?</h2>
+                <p class="lang-ar">نحن نقدم أفضل الخدمات بأعلى معايير الجودة</p>
+                <p class="lang-en">We provide the best services with the highest quality standards</p>
+            </div>
+            <div class="features-container">
+                <div class="feature-box">
+                    <h3 class="lang-ar">الاحترافية</h3>
+                    <h3 class="lang-en">Professionalism</h3>
+                    <p class="lang-ar">مناديب محترفين ويعرفون الطرق</p>
+                    <p class="lang-en">Professional couriers who know the routes</p>
+                </div>
+                <div class="feature-box">
+                    <h3 class="lang-ar">امان وموثوقية</h3>
+                    <h3 class="lang-en">Safety & Reliability</h3>
+                    <p class="lang-ar">نهتم بشحنتك وكأنها لنا</p>
+                    <p class="lang-en">We care for your shipment as if it were ours</p>
+                </div>
+                <div class="feature-box">
+                    <h3 class="lang-ar">سرعة في التوصيل</h3>
+                    <h3 class="lang-en">Fast Delivery</h3>
+                    <p class="lang-ar">نوصل طلبك بأسرع وقت مهما كان مكانك</p>
+                    <p class="lang-en">We deliver your order quickly wherever you are</p>
+                </div>
+                <div class="feature-box">
+                    <h3 class="lang-ar">دعم متواصل</h3>
+                    <h3 class="lang-en">Continuous Support</h3>
+                    <p class="lang-ar">نرد عليك ونتابع معك خطوة بخطوة</p>
+                    <p class="lang-en">We respond to you and follow up step by step</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients" id="clients">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="lang-ar">عملاؤنا</h2>
+                <h2 class="lang-en">Our Clients</h2>
+                <p class="lang-ar">شركاء النجاح الذين وثقوا بخدماتنا</p>
+                <p class="lang-en">Success partners who trusted our services</p>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+1" alt="عميل 1">
+                </div>
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+2" alt="عميل 2">
+                </div>
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+3" alt="عميل 3">
+                </div>
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+4" alt="عميل 4">
+                </div>
+                <div class="client-logo">
+                    <img src="https://via.placeholder.com/150x60?text=Client+5" alt="عميل 5">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2 class="lang-ar">جاهزون لخدمتكم</h2>
+            <h2 class="lang-en">Ready to Serve You</h2>
+            <p class="lang-ar">تواصل معنا الآن واحصل على أفضل خدمات التوصيل السريع في المنطقة</p>
+            <p class="lang-en">Contact us now and get the best fast delivery services in the region</p>
+            <a href="https://wa.me/+966501378454" class="btn btn-whatsapp lang-ar">تواصل عبر واتساب</a>
+            <a href="https://wa.me/+966501378454" class="btn btn-whatsapp lang-en">Contact via WhatsApp</a>
+            <a href="tel:++966501378454" class="btn lang-ar">اتصل بنا</a>
+            <a href="tel:++966501378454" class="btn lang-en">Call Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo lang-ar">فاست <span>ريتش</span></a>
+            <a href="#" class="footer-logo lang-en">Fast <span>Reach</span></a>
+            <div class="footer-info">
+                <div class="footer-info-item">
+                    <i>✉️</i>
+                    <span>fastreach5@gmail.com</span>
+                </div>
+                <div class="footer-info-item">
+                    <i>📍</i>
+                    <span class="lang-ar">الرياض</span>
+                    <span class="lang-en">Riyadh</span>
+                </div>
+            </div>
+            <p class="lang-ar">خدمة التوصيل السريع الأكثر كفاءة واحترافية</p>
+            <p class="lang-en">The most efficient and professional fast delivery service</p>
+            <div class="copyright">
+                &copy; <span class="lang-ar">2022 فاست ريتش. جميع الحقوق محفوظة.</span>
+                <span class="lang-en">2022 Fast Reach. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mainNav = document.getElementById('main-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('show');
+                // Change icon based on menu state
+                if (mainNav.classList.contains('show')) {
+                    this.textContent = '✕';
+                } else {
+                    this.textContent = '☰';
+                }
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('#main-nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('show');
+                    document.querySelector('.mobile-menu-btn').textContent = '☰';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('nav') && !e.target.classList.contains('mobile-menu-btn')) {
+                    mainNav.classList.remove('show');
+                    document.querySelector('.mobile-menu-btn').textContent = '☰';
+                }
+            });
+        });
+
+        // Background images for slides
+        const backgroundImages = [
+            'url(1.jpeg)',
+            'url(2.jpeg)',
+            'url(3.jpeg)'
+        ];
+        
+        // Set initial background image
+        document.querySelector('.hero').style.backgroundImage = 
+            `linear-gradient(135deg, rgba(0,62,110,0.8) 0%, rgba(0,119,182,0.8) 100%), ${backgroundImages[0]}`;
+        
+        // Enhanced Slider functionality
+        const heroSection = document.querySelector('.hero');
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentIndex = 0;
+        let slideInterval;
+        
+        function updateSlider() {
+            // Get current language direction
+            const isRTL = document.documentElement.dir === 'rtl';
+            
+            // Adjust translation based on language direction
+            const translation = isRTL ? currentIndex * 100 : currentIndex * -100;
+            slider.style.transform = `translateX(${translation}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+            
+            // Update background image
+            heroSection.style.backgroundImage = 
+                `linear-gradient(135deg, rgba(0,62,110,0.8) 0%, rgba(0,119,182,0.8) 100%), ${backgroundImages[currentIndex]}`;
+        }
+        
+        function startSlider() {
+            slideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            }, 3000);
+        }
+        
+        // Start the slider
+        updateSlider();
+        startSlider();
+        
+        // Pause on hover
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        slider.addEventListener('mouseleave', startSlider);
+        
+        // Dot navigation
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                currentIndex = parseInt(dot.getAttribute('data-index'));
+                updateSlider();
+                startSlider();
+            });
+        });
+        
+        // Touch swipe functionality for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(slideInterval);
+        }, false);
+        
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startSlider();
+        }, false);
+        
+        function handleSwipe() {
+            const isRTL = document.documentElement.dir === 'rtl';
+            const swipeThreshold = 50;
+            
+            if (Math.abs(touchEndX - touchStartX) < swipeThreshold) return;
+            
+            if ((isRTL && touchEndX < touchStartX) || (!isRTL && touchEndX > touchStartX)) {
+                currentIndex = (currentIndex + 1) % slides.length;
+            } else {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            }
+            updateSlider();
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Language toggle functionality
+        const languageToggles = document.querySelectorAll('.language-toggle span');
+        let currentLang = 'ar';
+        
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Update HTML lang and dir attributes
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update active toggle
+            languageToggles.forEach(t => {
+                t.classList.toggle('active', t.getAttribute('data-lang') === lang);
+            });
+            
+            // Show/hide language elements
+            document.querySelectorAll('.lang-ar, .lang-en').forEach(el => {
+                if (el.classList.contains(`lang-${lang}`)) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+            
+            // Update slider position when language changes
+            updateSlider();
+        }
+        
+        languageToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+        
+        // Initialize language
+        setLanguage('ar');
+    </script>
+</body>
+</html>
