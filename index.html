@@ -57,14 +57,38 @@
             flex-wrap: wrap;
         }
         
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
         .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--secondary);
+            display: flex;
+            align-items: center;
             text-decoration: none;
         }
         
-        .logo span {
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 10px;
+            border: 2px solid var(--primary);
+        }
+        
+        [lang="en"] .logo-img {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo-text span {
             color: var(--primary);
         }
         
@@ -157,10 +181,12 @@
             position: relative;
             overflow: hidden;
             transition: background-image 0.5s ease-in-out;
+            background-image: 
+
         }
         
         .welcome-message {
-            font-size: 24px;
+            font-size: 60px;
             margin-bottom: 20px;
             color: white;
             font-weight: 500;
@@ -202,13 +228,13 @@
         }
         
         .slide-content {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 1);
             backdrop-filter: blur(5px);
             border-radius: 12px;
             padding: 30px;
             width: 80%;
             max-width: 600px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0,.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
@@ -216,7 +242,7 @@
             font-size: 42px;
             margin: 0;
             line-height: 1.3;
-            color: white;
+            color: #FF6B00;
             font-weight: 700;
         }
         
@@ -473,15 +499,34 @@
             text-align: center;
         }
         
+        .footer-logo-container {
+            display: flex;
+            justify-content: center;
+        }
+        
         .footer-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            gap: 10px;
+        }
+        
+        .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        
+        .footer-logo-text {
             font-size: 28px;
             font-weight: 700;
             color: white;
-            margin-bottom: 20px;
-            display: inline-block;
         }
         
-        .footer-logo span {
+        .footer-logo-text span {
             color: var(--primary);
         }
         
@@ -592,6 +637,15 @@
             .about-content {
                 flex-direction: column;
             }
+            
+            .logo-text, .footer-logo-text {
+                font-size: 24px;
+            }
+            
+            .logo-img, .footer-logo-img {
+                width: 40px;
+                height: 40px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -611,6 +665,10 @@
             .footer-info {
                 flex-direction: column;
                 gap: 15px;
+            }
+            
+            .logo-text, .footer-logo-text {
+                font-size: 20px;
             }
         }
         
@@ -646,8 +704,16 @@
     <header>
         <div class="container header-container">
             <button class="mobile-menu-btn" aria-label="Menu">☰</button>
-            <a href="#" class="logo lang-ar">فاست <span>ريتش</span></a>
-            <a href="#" class="logo lang-en">Fast <span>Reach</span></a>
+            <div class="logo-container">
+                <a href="#" class="logo lang-ar">
+                    <img src="lo5.jpeg" alt="Fast Reach Logo" class="logo-img">
+                    <span class="logo-text">فاست <span>ريتش</span></span>
+                </a>
+                <a href="#" class="logo lang-en">
+                    <img src="lo5.jpeg" alt="Fast Reach Logo" class="logo-img">
+                    <span class="logo-text">Fast <span>Reach</span></span>
+                </a>
+            </div>
             <nav>
                 <ul id="main-nav">
                     <li><a href="#home" class="lang-ar">الرئيسية</a><a href="#home" class="lang-en">Home</a></li>
@@ -855,8 +921,16 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <a href="#" class="footer-logo lang-ar">فاست <span>ريتش</span></a>
-            <a href="#" class="footer-logo lang-en">Fast <span>Reach</span></a>
+            <div class="footer-logo-container">
+                <a href="#" class="footer-logo lang-ar">
+                    <img src="lo5.jpeg" alt="Fast Reach Logo" class="footer-logo-img">
+                    <span class="footer-logo-text">فاست <span>ريتش</span></span>
+                </a>
+                <a href="#" class="footer-logo lang-en">
+                    <img src="lo5.jpeg" alt="Fast Reach Logo" class="footer-logo-img">
+                    <span class="footer-logo-text">Fast <span>Reach</span></span>
+                </a>
+            </div>
             <div class="footer-info">
                 <div class="footer-info-item">
                     <i>✉️</i>
@@ -942,9 +1016,12 @@
                 dot.classList.toggle('active', index === currentIndex);
             });
             
+            //heroSection.style.backgroundImage = backgroundImages[currentIndex];
+            
             // Update background image
             heroSection.style.backgroundImage = 
-                `linear-gradient(135deg, rgba(0,62,110,0.8) 0%, rgba(0,119,182,0.8) 100%), ${backgroundImages[currentIndex]}`;
+                `linear-gradient(135deg, rgba(0,62,110,0.3) 0%, rgba(0,119,182,0.3) 100%), ${backgroundImages[currentIndex]}`;
+                
         }
         
         function startSlider() {
